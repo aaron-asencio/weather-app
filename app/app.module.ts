@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routes';
 
 import { AppComponent }  from './app.component';
+import { WeatherComponent } from './weather.component';
 import { PeopleListComponent } from './people-list.component';
 import { PersonDetailsComponent } from './person-details.component';
 
