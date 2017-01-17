@@ -12,7 +12,7 @@ import { PersonDetailsComponent } from './person-details.component';
 
 @NgModule({
   imports: [ BrowserModule, routing, FormsModule, HttpModule],
-  declarations: [ AppComponent, PeopleListComponent, PersonDetailsComponent],
+  declarations: [ AppComponent, PeopleListComponent, PersonDetailsComponent, WeatherComponent],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

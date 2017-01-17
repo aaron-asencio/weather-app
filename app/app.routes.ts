@@ -7,10 +7,10 @@ import { WeatherComponent } from './weather.component';
 // Route config let's you map routes to components
 const routes: Routes = [
   // map '/persons' to the people list component
-  /* {
+  {
     path: 'weather',
     component: WeatherComponent,
-  },*/
+  },
   {
     path: 'persons',
     component: PeopleListComponent,
@@ -23,7 +23,8 @@ const routes: Routes = [
   // map '/' to '/persons' as our default route
   {
     path: '',
-    redirectTo: '/persons',
+    // redirectTo: '/persons',
+    redirectTo: '/weather',
     pathMatch: 'full'
   },
 ];

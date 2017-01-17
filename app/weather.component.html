@@ -1,9 +1,68 @@
 <section>
-  <!-- <h2>Weather</h2>
+
   <div *ngIf="weather">
-    {{ weather.main.temp }}
+
+    <div class="jumbotron">
+      <h2>Weather</h2>
+    </div>
+<div class="col-lg-3 col-md-3 col-sm-4"> 
+    <div class="row">
+
+      <table class="table">
+        <tr>
+          <td>Temp</td>
+          <td>{{ weather.temp }} </td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td> {{ weather.description }}</td>
+        </tr>
+        <tr>
+          <td>Pressure</td>
+          <td>{{ weather.pressure }}</td>
+        </tr>
+        <tr>
+          <td>Humidity</td>
+          <td>{{ weather.humidity }}</td>
+        </tr>
+        <tr>
+          <td>Clouds</td>
+          <td>{{ weather.clouds }}</td>
+        </tr>
+        <tr>
+          <td>Temp Min</td>
+          <td>{{ weather.temp_min }}</td>
+        </tr>
+        <tr>
+          <td>Temp Max</td>
+          <td>{{ weather.temp_max }}</td>
+        </tr>
+        <tr>
+          <td>Wind</td>
+          <td>{{ weather.wind }}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{ weather.name }}</td>
+        </tr>
+        <tr>
+          <td>Icon</td>
+          <td> {{ weather.icon }} </td>
+        </tr>
+      </table>
+      </div>
+     
+    </div>
+
+
+
+
+
+
+
+
   </div>
   <section *ngIf="errorMessage">
     {{ errorMessage }}
-  </section> -->
+  </section>
 </section>

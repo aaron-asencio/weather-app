@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PeopleService } from './people.service';
+import { WeatherService } from './weather-service';
 
 @Component({
   selector: 'my-app',
@@ -7,7 +8,7 @@ import { PeopleService } from './people.service';
   <h1> {{title}} </h1>
   <router-outlet>
   `,
-  providers: [PeopleService]
+  providers: [PeopleService, WeatherService]
 })
 export class AppComponent {
   title:string = 'Star Wars Peoplez!';
