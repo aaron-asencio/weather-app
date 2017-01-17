@@ -13,6 +13,6 @@ import { PersonDetailsComponent } from './person-details.component';
 @NgModule({
   imports: [ BrowserModule, routing, FormsModule, HttpModule],
   declarations: [ AppComponent, PeopleListComponent, PersonDetailsComponent, WeatherComponent],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ WeatherComponent ]
 })
 export class AppModule { }

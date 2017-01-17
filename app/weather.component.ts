@@ -6,7 +6,8 @@ import { WeatherService } from './weather-service';
 //when @component is present the app won't run
 @Component({
     selector: 'weather-app',
-    templateUrl: 'app/weather.component.html'
+    templateUrl: 'app/weather.component.html',
+    providers: [ WeatherService]
 })
 export class WeatherComponent implements OnInit {
    // weather: Weather;
