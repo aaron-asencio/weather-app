@@ -5,7 +5,7 @@ import { routing } from './app.routes';
 
 //when @component is present the app won't run
 @Component({
-    selector: 'weather-app',
+   
     templateUrl: 'app/weather.component.html',
     providers: [ WeatherService]
 })
