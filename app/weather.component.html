@@ -1,14 +1,19 @@
+<!-- this resolves error ncaught (in promise): Error: Cannot find primary outlet to load 'WeatherComponent' but the template now appears twice on page 
+<router-outlet>
+  </router-outlet>
+ -->
+
 <section>
 
-  <div *ngIf="weather">
-
+  <div class="col-lg-3 col-md-3 col-sm-4">
     <div class="jumbotron">
       <h2>Weather</h2>
     </div>
-<div class="col-lg-3 col-md-3 col-sm-4"> 
     <div class="row">
-
-      <table class="table">
+      <div *ngIf="errorMessage" class="alert alert-dismissible alert-danger">
+        {{ errorMessage }}
+      </div>
+      <table class="table" *ngIf="weather">
         <tr>
           <td>Temp</td>
           <td>{{ weather.temp }} </td>
@@ -50,19 +55,7 @@
           <td> {{ weather.icon }} </td>
         </tr>
       </table>
-      </div>
-     
     </div>
-
-
-
-
-
-
-
-
   </div>
-  <section *ngIf="errorMessage">
-    {{ errorMessage }}
-  </section>
+
 </section>

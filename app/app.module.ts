@@ -5,14 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { routing } from './app.routes';
 
-import { AppComponent }  from './app.component';
+//import { AppComponent }  from './app.component';
 import { WeatherComponent } from './weather.component';
-import { PeopleListComponent } from './people-list.component';
-import { PersonDetailsComponent } from './person-details.component';
+
 
 @NgModule({
   imports: [ BrowserModule, routing, FormsModule, HttpModule],
-  declarations: [ AppComponent, PeopleListComponent, PersonDetailsComponent, WeatherComponent],
+  declarations: [  WeatherComponent],
   bootstrap: [ WeatherComponent ]
 })
 export class AppModule { }
