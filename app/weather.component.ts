@@ -18,7 +18,7 @@ export class WeatherComponent implements OnInit {
     errorMessage: string;
     isLoading: boolean = true;
     submitted: boolean = false;
-    pristine: boolean = true;
+   // pristine: boolean = true;
 
     constructor(private weatherService: WeatherService, private route: ActivatedRoute, private router: Router) { }
 
@@ -52,7 +52,8 @@ export class WeatherComponent implements OnInit {
     searchByZip() {
 
         console.log('searchByZip zip: ' + this.weather.zip);
-        console.log('searchByZip begin pristine: ' + this.pristine);
+        let zip = this.weather.zip;//store zip in temp
+       // console.log('searchByZip begin pristine: ' + this.pristine);
         this.submitted = true;
         this.sub = this.route.params.subscribe(params => {
              console.log('searchByZip getting weather for ' + this.weather.zip);
@@ -60,12 +61,13 @@ export class WeatherComponent implements OnInit {
                   this.weatherService.getWeather(this.weather.zip).subscribe(
                     w => {
                         this.weather = w;
+                        this.weather.zip = zip;
                     }, e => this.errorMessage = e, () => this.isLoading = false
                 );
             }
         });
-        this.pristine = false;
-        console.log('searchByZip end pristine: ' + this.pristine);
+       // this.pristine = false;
+       // console.log('searchByZip end pristine: ' + this.pristine);
     }
 
    

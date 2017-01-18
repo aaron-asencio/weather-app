@@ -48,7 +48,7 @@
         </tr>
         <tr>
           <td>Location</td>
-          <td>{{ weather.name }}, {{weather.zip}}</td>
+          <td>{{ weather.name }}</td>
         </tr>
         <tr>
           <td>Icon</td>
@@ -60,11 +60,11 @@
         <div class="form-group">
 
           <label for="zip">Zip</label>
-          <input type="text" name="zip" required [(ngModel)]="weather.zip" value="95409" placeholder="zip code">
+          <input type="text" name="zip" required [(ngModel)]="weather.zip" value="95409" placeholder="zip code" #zip="ngModel">
          
-         <!-- <div [hidden]="weather.zip.valid" class="error">
+         <div [hidden]="zip.valid || zip.pristine" class="error">
             Zip is required
-          </div>-->
+          </div>
         </div>
         <button type="submit" [disabled]="!weatherForm.valid">Get weather!</button>
       </form>
