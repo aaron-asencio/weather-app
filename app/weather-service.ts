@@ -8,7 +8,7 @@ import { WeatherReport } from './models/weather-report';
 export class WeatherService {
     // Resolve HTTP using the constructor
     constructor(private http: Http) { }
-    private APPID: string = 'c97c6bf76962c87ca86874c0848c8dd3';
+    private APPID: string = '';
     // private instance variable to hold base url
     private baseUrl = `http://api.openweathermap.org/data/2.5/weather?APPID=${this.APPID}&units=imperial&zip=us,`;
 
