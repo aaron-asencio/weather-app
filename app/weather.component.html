@@ -16,44 +16,42 @@
       <table class="table">
         <tr>
           <td>Temp</td>
-          <td>{{ weather.temp }} </td>
+          <td>{{ weather.temp }} &deg; <img src="http://openweathermap.org/img/w/{{weather.icon}}.png"></td>
         </tr>
+        
         <tr>
           <td>Description</td>
           <td> {{ weather.description }}</td>
         </tr>
         <tr>
           <td>Pressure</td>
-          <td>{{ weather.pressure }}</td>
+          <td>{{ weather.pressure }} hPa</td>
         </tr>
         <tr>
           <td>Humidity</td>
-          <td>{{ weather.humidity }}</td>
+          <td>{{ weather.humidity }} %</td>
         </tr>
         <tr>
-          <td>Clouds</td>
-          <td>{{ weather.clouds }}</td>
+          <td>Cloudiness</td>
+          <td>{{ weather.clouds }} %</td>
         </tr>
         <tr>
           <td>Temp Min</td>
-          <td>{{ weather.temp_min }}</td>
+          <td>{{ weather.temp_min }} &deg;</td>
         </tr>
         <tr>
           <td>Temp Max</td>
-          <td>{{ weather.temp_max }}</td>
+          <td>{{ weather.temp_max }} &deg;</td>
         </tr>
         <tr>
           <td>Wind</td>
-          <td>{{ weather.wind }}</td>
+          <td>{{ weather.windSpeed }} mph {{ weather.windDirection }} &deg;</td>
         </tr>
         <tr>
           <td>Location</td>
           <td>{{ weather.name }}</td>
         </tr>
-        <tr>
-          <td>Icon</td>
-          <td> {{ weather.icon }} </td>
-        </tr>
+
       </table>
 
       <form (ngSubmit)="searchByZip()" #weatherForm="ngForm">
@@ -61,8 +59,8 @@
 
           <label for="zip">Zip</label>
           <input type="text" name="zip" required [(ngModel)]="weather.zip" value="95409" placeholder="zip code" #zip="ngModel">
-         
-         <div [hidden]="zip.valid || zip.pristine" class="error">
+
+          <div [hidden]="zip.valid || zip.pristine" class="error">
             Zip is required
           </div>
         </div>

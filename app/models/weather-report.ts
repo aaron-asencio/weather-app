@@ -7,7 +7,8 @@ export class WeatherReport {
     temp_min: number;
     temp_max: number;
     clouds: number;
-    wind: number;
+    windSpeed: number;
+    windDirection: number;
     name: string;
     latitude: number;
     longitude: number;
