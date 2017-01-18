@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-
 import { Observable } from 'rxjs/Rx';
 import { Weather } from './models/weather';
 import { WeatherReport } from './models/weather-report';
@@ -27,6 +26,7 @@ export class WeatherService {
             return result;
         } else {
             //  throw "Invalid zip code format";
+            console.log('Invalid zip code format');
         }
 
     }

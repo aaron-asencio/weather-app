@@ -9,11 +9,11 @@
     <div class="jumbotron">
       <h2>Weather</h2>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="weather">
       <div *ngIf="errorMessage" class="alert alert-dismissible alert-danger">
         {{ errorMessage }}
       </div>
-      <table class="table" *ngIf="weather">
+      <table class="table">
         <tr>
           <td>Temp</td>
           <td>{{ weather.temp }} </td>
@@ -47,14 +47,27 @@
           <td>{{ weather.wind }}</td>
         </tr>
         <tr>
-          <td>Name</td>
-          <td>{{ weather.name }}</td>
+          <td>Location</td>
+          <td>{{ weather.name }}, {{weather.zip}}</td>
         </tr>
         <tr>
           <td>Icon</td>
           <td> {{ weather.icon }} </td>
         </tr>
       </table>
+
+      <form (ngSubmit)="searchByZip()" #weatherForm="ngForm">
+        <div class="form-group">
+
+          <label for="zip">Zip</label>
+          <input type="text" name="zip" required [(ngModel)]="weather.zip" value="95409" placeholder="zip code">
+         
+         <!-- <div [hidden]="weather.zip.valid" class="error">
+            Zip is required
+          </div>-->
+        </div>
+        <button type="submit" [disabled]="!weatherForm.valid">Get weather!</button>
+      </form>
     </div>
   </div>
 
