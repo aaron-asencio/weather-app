@@ -15,10 +15,13 @@
       </div>
       <table class="table">
         <tr>
-          <td>Temp</td>
-          <td>{{ weather.temp }} &deg; <img src="http://openweathermap.org/img/w/{{weather.icon}}.png"></td>
+          
+          <td colspan="2"><h3>{{ weather.temp }}&deg; <img src="http://openweathermap.org/img/w/{{weather.icon}}.png"></h3></td>
         </tr>
-        
+          <tr>
+          <td>Hi/Lo</td>
+          <td>{{ weather.temp_max }}&deg;/{{ weather.temp_min }}&deg;</td>
+        </tr>
         <tr>
           <td>Description</td>
           <td> {{ weather.description }}</td>
@@ -29,23 +32,16 @@
         </tr>
         <tr>
           <td>Humidity</td>
-          <td>{{ weather.humidity }} %</td>
+          <td>{{ weather.humidity }}%</td>
         </tr>
         <tr>
           <td>Cloudiness</td>
-          <td>{{ weather.clouds }} %</td>
+          <td>{{ weather.clouds }}%</td>
         </tr>
-        <tr>
-          <td>Temp Min</td>
-          <td>{{ weather.temp_min }} &deg;</td>
-        </tr>
-        <tr>
-          <td>Temp Max</td>
-          <td>{{ weather.temp_max }} &deg;</td>
-        </tr>
+      
         <tr>
           <td>Wind</td>
-          <td>{{ weather.windSpeed }} mph {{ weather.windDirection }} &deg;</td>
+          <td>{{ weather.windSpeed }} mph, {{ weather.windDirection }} &deg;</td>
         </tr>
         <tr>
           <td>Location</td>

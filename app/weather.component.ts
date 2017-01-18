@@ -18,24 +18,16 @@ export class WeatherComponent implements OnInit {
     errorMessage: string;
     isLoading: boolean = true;
     submitted: boolean = false;
-   // pristine: boolean = true;
-
+  
     constructor(private weatherService: WeatherService, private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
 
-        console.log('ngOnInit calling nginit');
 
         this.sub = this.route.params.subscribe(params => {
            
-           //check numeric
-           // Number.parseInt(params['zip']);
-            let zip = params['zip']; 
-         
-            if (!zip || zip.length != 5) {
-                zip = '92373';
-            }
-            this.zipCode = zip;
+           //set default zip - could use browser coordinates to get default - see angular2-google-map
+            let zip = '95409';
             
             console.log('getting weather for ' + this.zipCode);
 
@@ -51,9 +43,7 @@ export class WeatherComponent implements OnInit {
 
     searchByZip() {
 
-        console.log('searchByZip zip: ' + this.weather.zip);
         let zip = this.weather.zip;//store zip in temp
-       // console.log('searchByZip begin pristine: ' + this.pristine);
         this.submitted = true;
         this.sub = this.route.params.subscribe(params => {
              console.log('searchByZip getting weather for ' + this.weather.zip);
