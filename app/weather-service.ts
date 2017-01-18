@@ -20,11 +20,10 @@ export class WeatherService {
                 //...errors if any
                 .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 
-            console.log('results: ' + result);
-
             return result;
         } else {
             //  throw "Invalid zip code format";
+            //need to set error in page
             console.log('Invalid zip code format');
         }
 
@@ -54,7 +53,7 @@ function toWeather(r: any): Weather {
 
 
     });
-    console.log('Parsed weather:', weather);
+   
     return weather;
 }
 
@@ -91,7 +90,6 @@ function toWeatherReport(r: any): WeatherReport {
 
 
     });
-    console.log('Parsed weather report:', weatherReport);
     return weatherReport;
 }
 
