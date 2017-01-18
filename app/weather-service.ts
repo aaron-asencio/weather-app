@@ -8,14 +8,13 @@ import { WeatherReport } from './models/weather-report';
 export class WeatherService {
     // Resolve HTTP using the constructor
     constructor(private http: Http) { }
-
+    private APPID: string = 'c97c6bf76962c87ca86874c0848c8dd3';
     // private instance variable to hold base url
-    private baseUrl = 'http://api.openweathermap.org/data/2.5/weather?APPID=c97c6bf76962c87ca86874c0848c8dd3&units=imperial&zip=us,';
+    private baseUrl = `http://api.openweathermap.org/data/2.5/weather?APPID=${this.APPID}&units=imperial&zip=us,`;
 
     getWeather(zipcode: string): Observable<WeatherReport> {
         if (zipcode && zipcode.length == 5) {
-            //http://api.openweathermap.org/data/2.5/weather?APPID=c97c6bf76962c87ca86874c0848c8dd3&zip=us,95409
-            let result = this.http.get(`${this.baseUrl}${zipcode}`, { headers: this.getHeaders() })
+               let result = this.http.get(`${this.baseUrl}${zipcode}`, { headers: this.getHeaders() })
                 // ...and calling .json() on the response to return data
                 .map((mapWeatherReport))
                 //...errors if any
