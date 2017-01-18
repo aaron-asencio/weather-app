@@ -24,7 +24,7 @@ export class WeatherService {
         } else {
             //  throw "Invalid zip code format";
             //need to set error in page
-            console.log('Invalid zip code format');
+          
         }
 
     }

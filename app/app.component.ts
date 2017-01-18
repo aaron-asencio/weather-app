@@ -3,7 +3,8 @@ import { WeatherService } from './weather-service';
 
 @Component({
   selector: 'my-app',
-  template: ` <router-outlet>`,
+  templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css'], 
   providers: [ WeatherService]
 })
 export class AppComponent {
