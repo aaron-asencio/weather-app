@@ -12,9 +12,6 @@ export class WeatherService {
 
     // private instance variable to hold base url
     private baseUrl = `http://api.openweathermap.org/data/2.5/weather?APPID=${this.APPID}&units=imperial&zip=us,`;
-
-
-
     getWeather(zipcode: string): Observable<WeatherReport> {
 
         this.logger.log('first log message from log4ng');
