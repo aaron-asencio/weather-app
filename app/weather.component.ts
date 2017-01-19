@@ -48,7 +48,7 @@ export class WeatherComponent implements OnInit {
                     w => {
                         this.weather = w;
                         this.weather.zip = zip;
-                    }, e => this.errorMessage = e, () => this.isLoading = false
+                    }, e => {this.errorMessage = e; console.log('error: '+ e)}, () => this.isLoading = false
                 );
             }
         });

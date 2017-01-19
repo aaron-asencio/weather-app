@@ -1,20 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Weather } from './models/weather';
 import { WeatherReport } from './models/weather-report';
+import { Logger } from 'angular2-logger/core';
 
 @Injectable()
 export class WeatherService {
     // Resolve HTTP using the constructor
-    constructor(private http: Http) { }
+    constructor(private http: Http, private logger: Logger) { }
     private APPID: string = 'c97c6bf76962c87ca86874c0848c8dd3';
+
     // private instance variable to hold base url
     private baseUrl = `http://api.openweathermap.org/data/2.5/weather?APPID=${this.APPID}&units=imperial&zip=us,`;
 
+
+
     getWeather(zipcode: string): Observable<WeatherReport> {
+
+        this.logger.log('first log message from log4ng');
+        zipcode = '95409';
+        //  replace with regex  /(^\d{5}$)/
         if (zipcode && zipcode.length == 5) {
-               let result = this.http.get(`${this.baseUrl}${zipcode}`, { headers: this.getHeaders() })
+            let result = this.http.get(`${this.baseUrl}${zipcode}`, { headers: this.getHeaders() })
                 // ...and calling .json() on the response to return data
                 .map((mapWeatherReport))
                 //...errors if any
@@ -22,11 +29,8 @@ export class WeatherService {
 
             return result;
         } else {
-            //  throw "Invalid zip code format";
-            //need to set error in page
-          
-        }
 
+        }
     }
 
     private getHeaders() {
@@ -35,28 +39,6 @@ export class WeatherService {
         return headers;
     }
 }
-
-function mapWeather(response: Response): Weather {
-    // toPerson looks just like in the previous example
-    return toWeather(response.json());
-}
-
-function toWeather(r: any): Weather {
-    let weather = <Weather>({
-
-        weather: r.weather,
-        base: r.base,
-        main: r.main,
-        coord: r.coord,
-        clouds: r.clouds,
-        wind: r.wind,
-
-
-    });
-   
-    return weather;
-}
-
 
 function mapWeatherReport(response: Response): WeatherReport {
     // toPerson looks just like in the previous example
