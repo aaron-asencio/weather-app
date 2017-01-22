@@ -1,4 +1,4 @@
-export class WeatherReport {
+export interface WeatherReport {
     description: string;
     icon: string;
     temp: number;
@@ -13,8 +13,4 @@ export class WeatherReport {
     latitude: number;
     longitude: number;
     zip: string;
-    //  sys: { type: number, id: number, message: number, country: string, sunrise: number, sunset: number };
-    //wind: { speed: number, deg: number };
-
-
 }

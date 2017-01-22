@@ -18,27 +18,16 @@ export class WeatherComponent implements OnInit {
     errorMessage: string;
     isLoading: boolean = true;
     submitted: boolean = false;
-   // pristine: boolean = true;
-
+  
     constructor(private weatherService: WeatherService, private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
 
-        console.log('ngOnInit calling nginit');
 
         this.sub = this.route.params.subscribe(params => {
            
-           //check numeric
-           // Number.parseInt(params['zip']);
-            let zip = params['zip']; 
-         
-            if (!zip || zip.length != 5) {
-                zip = '92373';
-            }
-            this.zipCode = zip;
-            
-            console.log('getting weather for ' + this.zipCode);
-
+           //set default zip - could use browser coordinates to get default - see angular2-google-map
+            let zip = '95409';
             this.weatherService.getWeather(zip).subscribe(
                 w => {
                     this.weather = w;
@@ -51,23 +40,19 @@ export class WeatherComponent implements OnInit {
 
     searchByZip() {
 
-        console.log('searchByZip zip: ' + this.weather.zip);
         let zip = this.weather.zip;//store zip in temp
-       // console.log('searchByZip begin pristine: ' + this.pristine);
         this.submitted = true;
         this.sub = this.route.params.subscribe(params => {
-             console.log('searchByZip getting weather for ' + this.weather.zip);
             if (this.weather.zip && this.weather.zip.length == 5) {
                   this.weatherService.getWeather(this.weather.zip).subscribe(
                     w => {
                         this.weather = w;
                         this.weather.zip = zip;
-                    }, e => this.errorMessage = e, () => this.isLoading = false
+                    }, e => {this.errorMessage = e; console.log('error: '+ e)}, () => this.isLoading = false
                 );
             }
         });
-       // this.pristine = false;
-       // console.log('searchByZip end pristine: ' + this.pristine);
+
     }
 
    

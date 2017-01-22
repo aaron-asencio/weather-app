@@ -1,24 +1,25 @@
-<!-- this resolves error ncaught (in promise): Error: Cannot find primary outlet to load 'WeatherComponent' but the template now appears twice on page 
-<router-outlet>
-  </router-outlet>
- -->
-
 <section>
 
   <div class="col-lg-3 col-md-3 col-sm-4">
     <div class="jumbotron">
       <h2>Weather</h2>
     </div>
-    <div class="row" *ngIf="weather">
       <div *ngIf="errorMessage" class="alert alert-dismissible alert-danger">
         {{ errorMessage }}
       </div>
+    <div class="row" *ngIf="weather">
+    
       <table class="table">
         <tr>
-          <td>Temp</td>
-          <td>{{ weather.temp }} &deg; <img src="http://openweathermap.org/img/w/{{weather.icon}}.png"></td>
+
+          <td colspan="2">
+            <h3>{{ weather.temp }}&deg; <img src="http://openweathermap.org/img/w/{{weather.icon}}.png"></h3>
+          </td>
         </tr>
-        
+        <tr>
+          <td>Hi/Lo</td>
+          <td>{{ weather.temp_max }}&deg;/{{ weather.temp_min }}&deg;</td>
+        </tr>
         <tr>
           <td>Description</td>
           <td> {{ weather.description }}</td>
@@ -29,23 +30,16 @@
         </tr>
         <tr>
           <td>Humidity</td>
-          <td>{{ weather.humidity }} %</td>
+          <td>{{ weather.humidity }}%</td>
         </tr>
         <tr>
           <td>Cloudiness</td>
-          <td>{{ weather.clouds }} %</td>
+          <td>{{ weather.clouds }}%</td>
         </tr>
-        <tr>
-          <td>Temp Min</td>
-          <td>{{ weather.temp_min }} &deg;</td>
-        </tr>
-        <tr>
-          <td>Temp Max</td>
-          <td>{{ weather.temp_max }} &deg;</td>
-        </tr>
+
         <tr>
           <td>Wind</td>
-          <td>{{ weather.windSpeed }} mph {{ weather.windDirection }} &deg;</td>
+          <td>{{ weather.windSpeed }} mph, {{ weather.windDirection }} &deg;</td>
         </tr>
         <tr>
           <td>Location</td>
@@ -58,14 +52,17 @@
         <div class="form-group">
 
           <label for="zip">Zip</label>
-          <input type="text" name="zip" required [(ngModel)]="weather.zip" value="95409" placeholder="zip code" #zip="ngModel">
-
-          <div [hidden]="zip.valid || zip.pristine" class="error">
-            Zip is required
+          <input type="text" name="zip" pattern="^\d{5}" required [(ngModel)]="weather.zip" placeholder="zip code" #zip="ngModel">
+          <div>
+            <small [hidden]="zip.valid || (zip.pristine && !weatherForm.submitted)">
+            5 digit zip required.
+          </small>
           </div>
         </div>
+       
         <button type="submit" [disabled]="!weatherForm.valid">Get weather!</button>
-      </form>
+        </form>
+        <!--<pre *ngIf="zip.errors">{{ zip.errors | json }}</pre>-->
     </div>
   </div>
 
